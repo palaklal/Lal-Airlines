@@ -1,0 +1,27 @@
+body {
+  background-image: url('../img/clouds.jpg');
+  background-size: 100%;
+  background-color: lightblue;
+}
+
+h1 {
+  text-align: center;
+  color: darkblue;
+}
+
+#container {
+  color: blue;
+  text-align: left;
+  background: white;
+  width: 50%;
+  margin: auto;
+  margin-top: 10%;
+  padding: 5%;
+  border-radius: 40%;
+}
+
+input, button {
+  border-top: none;
+  border-left: none;
+  background: transparent;
+}
