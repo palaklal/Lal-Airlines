@@ -1,19 +1,31 @@
-<html>
+<html ng-app="lalAirlines">
 <head>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="node_modules/angular/angular.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
 	<title>Lal Airlines</title>
 </head>
 <body>
 	<div id="container">
-		<h1><b>Welcome to Lal Airlines!</b></h1>
-		<form>
-			Start Date		<input type="date"></input> <br> <br>
-			Number of Passengers	<input type="number" min="1" value="1"></input> <br> <br>
-			Origin			<input type="text"></input> <br> <br>
-			Destination		<input type="text"></input> <br> <br>
-			Maximum Price	<input type="number" min="1"></input> <br> <br>
-			<button>Submit!</button> <br> <br>
-		</form>
+		<div id="search" ng-controller="searchController as searchCtrl" ng-submit="searchCtrl.searchFlights()">
+			<h1><b>Welcome to Lal Airlines!</b></h1>
+			<form>
+				Start Date:		<input type="date" ng-model="searchCtrl.form.date"></input> <br> <br>
+				Number of Passengers:	<input type="number" ng-model="searchCtrl.form.num" min="1" value="1"></input> <br> <br>
+				Origin:			<input type="text" ng-model="searchCtrl.form.origin"></input> <br> <br>
+				Destination:		<input type="text" ng-model="searchCtrl.form.destination"></input> <br> <br>
+				Maximum Price:	<input type="number" ng-model="searchCtrl.form.max" min="1"></input> <br> <br>
+				<button>Find Flights!</button> <br> <br>
+			</form>
+			<h1>{{searchCtrl.form.date}}</h1>
+			<h1>{{searchCtrl.form.num}}</h1>
+			<h1>{{searchCtrl.form.origin}}</h1>
+			<h1>{{searchCtrl.form.destination}}</h1>
+			<h1>{{searchCtrl.form.max}}</h1>
+		</div>
+		<div id="results">
+			Results
+		</div>
 	</div>
 </body>
 </html>

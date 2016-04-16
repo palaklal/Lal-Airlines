@@ -6,22 +6,30 @@ body {
 
 h1 {
   text-align: center;
-  color: darkblue;
 }
 
 #container {
-  color: blue;
-  text-align: left;
-  background: white;
   width: 50%;
   margin: auto;
+  color: white;
+  padding: 10%;
+}
+
+#search {
+  text-align: left;
   margin-top: 10%;
-  padding: 5%;
   border-radius: 40%;
 }
 
 input, button {
   border-top: none;
   border-left: none;
+}
+
+input {
   background: transparent;
+}
+
+button {
+  background: white;
 }
