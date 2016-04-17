@@ -8,14 +8,31 @@
 <body>
 	<div id="container">
 		<div id="search" ng-controller="searchController as searchCtrl" ng-submit="searchCtrl.searchFlights()">
-			<h1><b>WELCOME TO LAL AIRLINES!</b></h1>
 			<form>
-				Start Date:		<input type="date" ng-model="searchCtrl.form.startDate"></input> <br> <br>
-				End Date:		<input type="date" ng-model="searchCtrl.form.endDate"></input> <br> <br>
-				Number of Passengers:	<input type="number" ng-model="searchCtrl.form.num" min="1" value="1"></input> <br> <br>
-				Origin:			<input type="text" ng-model="searchCtrl.form.origin"></input> <br> <br>
-				Destination:		<input type="text" ng-model="searchCtrl.form.destination"></input> <br> <br>
-				Maximum Price:	<input type="number" ng-model="searchCtrl.form.max" min="1"></input> <br> <br>
+				<p class="table-row">
+					<label>Start Date: </label> 
+					<input type="date" ng-model="searchCtrl.form.startDate" required></input> <br> <br>
+				</p>
+				<p class="table-row">
+					<label>End Date: </label> 
+					<input type="date" ng-model="searchCtrl.form.endDate"></input> <br> <br>
+				</p>
+				<p class="table-row">
+					<label>Number of Passengers: </label> 
+					<input type="number" ng-model="searchCtrl.form.num" min="1" value="1" required></input> <br> <br>
+				</p>
+				<p class="table-row">
+					<label>Origin: </label> 
+					<input type="text" ng-model="searchCtrl.form.origin" maxlength="3" required></input> <br> <br>
+				</p>
+				<p class="table-row">
+					<label>Destination:	</label> 
+					<input type="text" ng-model="searchCtrl.form.destination" maxlength="3" required></input> <br> <br>
+				</p>
+				<p class="table-row">
+					<label>Maximum Price: </label> 
+					<input type="number" ng-model="searchCtrl.form.max" min="1" step="50"></input> <br> <br>
+				</p>
 				<button>Find Flights!</button> <br> <br>
 			</form>
 		</div>

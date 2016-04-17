@@ -7,7 +7,6 @@
 		this.searchFlights = (function(){
 			//convert HTML dates to date format the API requires
 			this.form.startDate = $filter('date')(this.form.startDate, 'yyyy-MM-dd');
-			this.form.endDate = $filter('date')(this.form.endDate, 'yyyy-MM-dd');
 
 			console.log(this.form);
 			var request = { //request body for http.post to Google Flights QPX API
@@ -20,19 +19,27 @@
 			        origin: this.form.origin,
 			        destination: this.form.destination,
 			        date: this.form.startDate + ""
-			      },
-			      {
+			      }
+			    ],
+			    solutions: 10
+			  }
+			};
+			if (this.form.endDate) { //this isn't a required field so check if it's been flled out first and then add to request
+				this.form.endDate = $filter('date')(this.form.endDate, 'yyyy-MM-dd');
+				var returningJourney = {
 			        origin: this.form.destination,
 			        destination: this.form.origin,
 			        date: this.form.endDate + ""
-			      }
-			    ],
-			    maxPrice: "USD" + this.form.max
-			  }
-			};
+			    }
+				request.request.slice.push(returningJourney);
+			}
+			if (this.form.max) { //if user set a maximum ticket price, add to request
+				request.request.maxPrice = "USD" + this.form.max;
+			}
 			console.log(request);
+
 			$http({ //http post to Google QPX API to receive all the flights that match user's search criteria
-				url: 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=API_KEY',
+				url: 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=YOUR_API',
 				method: 'POST',
 				data: request,
 				headers: {'Content-Type': 'application/json'}	
