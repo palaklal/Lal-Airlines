@@ -10,7 +10,8 @@
 		<div id="search" ng-controller="searchController as searchCtrl" ng-submit="searchCtrl.searchFlights()">
 			<h1><b>WELCOME TO LAL AIRLINES!</b></h1>
 			<form>
-				Start Date:		<input type="date" ng-model="searchCtrl.form.date"></input> <br> <br>
+				Start Date:		<input type="date" ng-model="searchCtrl.form.startDate"></input> <br> <br>
+				End Date:		<input type="date" ng-model="searchCtrl.form.endDate"></input> <br> <br>
 				Number of Passengers:	<input type="number" ng-model="searchCtrl.form.num" min="1" value="1"></input> <br> <br>
 				Origin:			<input type="text" ng-model="searchCtrl.form.origin"></input> <br> <br>
 				Destination:		<input type="text" ng-model="searchCtrl.form.destination"></input> <br> <br>
@@ -18,7 +19,7 @@
 				<button>Find Flights!</button> <br> <br>
 			</form>
 		</div>
-		<div id="results" ng-controller="flightsController as flightsCtrl" ng-show="flightsCtrl.empty">
+		<div id="results" ng-controller="flightsController as flightsCtrl" ng-hide="flightsCtrl.empty">
 			Results
 		</div>
 	</div>
