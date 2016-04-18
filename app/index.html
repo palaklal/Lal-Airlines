@@ -3,13 +3,14 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script type="text/javascript" src="node_modules/angular/angular.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
+	<meta name="viewport" content="width=device-width" />
 	<title>Lal Airlines</title>
 </head>
 <body>
 	<div id="container">
 		<div id="search" ng-controller="searchController as searchCtrl" ng-submit="searchCtrl.searchFlights()">
 			<form>
-				<p class="table-row">
+				<p class="table-row"> 
 					<label>Start Date: </label> 
 					<input type="date" ng-model="searchCtrl.form.startDate" required></input> <br> <br>
 				</p>
@@ -31,13 +32,28 @@
 				</p>
 				<p class="table-row">
 					<label>Maximum Price: </label> 
-					<input type="number" ng-model="searchCtrl.form.max" min="1" step="50"></input> <br> <br>
+					<input type="number" ng-model="searchCtrl.form.max" min="1"></input> <br> <br>
 				</p>
 				<button>Find Flights!</button> <br> <br>
 			</form>
-		</div>
-		<div id="results" ng-controller="flightsController as flightsCtrl" ng-hide="flightsCtrl.empty">
-			Results
+			<div id="results" ng-show="searchCtrl.results.length" ng-repeat="result in searchCtrl.results | orderBy: 'price': reverse" ng-click="count = count + 1" ng-init="count = 0"> 
+				<h1>{{result.price}}</h1> 
+				<div class="results-overview" ng-repeat="trip in result.roundtrip">
+					<p>Start Date:{{trip.startDate | date:'MMMM d, y h:mm:ss' | uppercase}}</p>
+					<p>End Date: {{trip.arrivalDate | date:'MMMM d, y h:mm:ss'| uppercase}}</p>
+					<p>Number of Stops: {{trip.numberOfStops}}</p>
+					<hr>
+					<div class="detail-view" ng-show="count && trip.length > 1" ng-repeat="leg in trip">
+						<p>Carrier: {{leg.carrier | uppercase}}</p>
+						<p>Flight Number: {{leg.flightNumber}}</p>
+						<p>Origin: {{leg.origin}}</p>
+						<p>Destination: {{leg.destination}}</p>
+						<p>Departure: {{leg.departureTime | date:'MMMM d, y h:mm:ss' | uppercase}}</p>
+						<p>Arrival: {{leg.arrivalTime | date:'MMMM d, y h:mm:ss' | uppercase}}</p>
+						<hr>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>

@@ -19,10 +19,7 @@ body {
 }
 
 #results {
-  background-color: white;
-  color: darkblue;
-  padding: 5%;
-  border-radius: 5%;
+  font-family: "Lucida Console", Monaco, monospace;
 }
 
 form {
@@ -52,4 +49,17 @@ input:focus {
 
 button {
   background: silver;
+}
+
+hr {
+  border-color: silver;
+  background-color: silver;
+  color: silver;
+}
+.results-overview {
+  margin-left: 10%;
+}
+
+.detail-view {
+  margin-left: 15%;
 }
